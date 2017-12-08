@@ -1,0 +1,18 @@
+<!-- heroku -->
+heroku ps
+heroku ps:scale web=0
+heroku open
+git push heroku master
+heroku ps:stop run
+<-- -->
+
+<!-- django -->
+
+ti = TattooImage(owner=admin_user, name="wolf")
+
+TattooImage.objects.all()
+
+from  django.core.files import File"
+with open('media/tattooimg/wolf.jpg', "rb") as im_file:
+    ti.datafile.save('media/tattooimg/wolf.jpg', File(im_file), save=True)
+<-- -->
