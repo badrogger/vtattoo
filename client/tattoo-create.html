@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shop Homepage - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/common.css rel="stylesheet">
+
+    <!-- <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'> -->
+    <link href = "css/tattoo-create.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="vendor/jquery/jquery.js"></script>
+    <script src="js/host.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- <script src="js/get_index_images.js"></script> -->
+<!--    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>   -->
+
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Vtattoo</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+          <ul class="nav navbar-nav">
+              <li class="acitve"> <a href="tattoo-create.html" class="nav-link"> Create tattoo</a></li>
+          </ul>
+
+
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li id="signin-btn" class="nav-item">
+                <a class="nav-link" href="signin.html">Login</a>
+            </li>
+            <li id="signup-btn" class="nav-item">
+                <a class="nav-link" href="signup.html">Signup</a>
+            </li>
+            <li id="user-btn" class="nav-item" style="display: none;">
+                <a id="user-link" class="nav-link" href="#"></a>
+            </li>
+            <li id="logout-btn" class="nav-item" style="display: none;">
+
+                <a data-bb-example-key="confirm-default" class="nav-link" href="">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="successAlert" class="alert alert-success alert-dismissable" role="alert" style="display:none; margin-top: 48px;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Success!</strong> You created tattoo.
+</div>
+
+    <div class="wrapper">
+      <!-- <h1>Image Editor</h1>
+ -->
+      <!--Form for collecting image URL -->
+      <!-- <form id="urlBox" class="center" enctype="multipart/form-data" method="post">
+         <input class="form-control url-box" type="file" id="imgUrl" placeholder="Paste any image link and hit enter to start playing.">
+      </form> -->
+
+      <!--Controls for CSS filters via range input-->
+      <div class="sliders">
+        <form id="imageEditor" method="post">
+          <input class="form-control url-box" type="file" id="imgUrl" placeholder="Paste any image link and hit enter to start playing.">
+          <p>
+            <div class="input-group">
+
+            <input type="text" id="tattooName" class="form-control name-box" placeholder="Name" aria-describedby="basic-addon1">
+            </div>
+          </p>
+          <p>
+            <label for="gs">Grayscale</label>
+            <input id="gs" name="gs" type="range" min=0 max=100 value=0>
+          </p>
+
+          <p>
+            <label for="blur">Blur</label>
+            <input id="blur" name="blur" type="range" min=0 max=10 value=0>
+          </p>
+
+          <p>
+            <label for="br">Brightness</label>
+            <input id="br" name="br" type="range" min=0 max=200 value=100>
+          </p>
+
+          <p>
+            <label for="ct">Contrast</label>
+            <input id="ct" name="ct" type="range" min=0 max=200 value=100>
+          </p>
+
+          <p>
+            <label for="huer">Hue Rotate</label>
+            <input id="huer" name="huer" type="range" min=0 max=360 value=0>
+          </p>
+
+          <p>
+            <label for="opacity">Opacity</label>
+            <input id="opacity" name="opacity" type="range" min=0 max=100 value=100>
+          </p>
+
+          <p>
+            <label for="invert">Invert</label>
+            <input id="invert" name="invert" type="range" min=0 max=100 value=0>
+          </p>
+
+          <p>
+            <label for="saturate">Saturate</label>
+            <input id="saturate" name="saturate" type="range" min=0 max=500 value=100>
+          </p>
+
+          <p>
+            <label for="sepia">Sepia</label>
+            <input id="sepia" name="sepia" type="range" min=0 max=100 value=0>
+          </p>
+
+          <!-- <p>
+            <input type="checkbox" id="tempChb" />
+            <label for="tempChb">Temp</label>
+            <input type="checkbox" id="coloredChb" />
+            <label for="coloredChb">Colored</label>
+          </p>
+          <p>
+          <div class="form-group place-select-group">
+          <label class="place-select-label" style="margin-right: -31px;" for="placeSelect">Place</label>
+          <select class="form-control place-select" id="placeSelect">
+            <option>Shoulder</option>
+            <option>Arm</option>
+            <option>Chest</option>
+            <option>Leg</option>
+            <option>Back</option>
+            <option>Hip</option>
+            <option>Head</option>
+          </select>
+        </div>
+      </p> -->
+      <p>
+          <input type="reset" form="imageEditor" style="float:left; margin-top: 1px;" class="form-button" id="reset" value="Reset" />
+          <input type="submit" style="float:right; margin-bottom: 5px; margin-top: 1px;" form="imageEditor" class="form-button" id="saveTattooImage" value="Save" />
+      </p>
+        </form>
+      </div>
+
+      <!--container where image will be loaded-->
+      <div id="imageContainer" class="center">
+        <img id="tattooImage" src="static/d1.jpg"/>
+      </div>
+    </div>
+    <canvas id="hiddenCanvas"  width="1000" height="1000"
+    style="display: none"> </canvas>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Vtattoo 2017</p>
+      </div>
+    </footer>
+
+  </body>
+
+<script type="text/javascript" src="js/tattoo-create.js"></script>
+<script type="text/javascript" src="js/isauthorized_action.js"></script>
+
+<script>
+
+
+</script>
+</html>

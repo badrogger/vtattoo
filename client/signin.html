@@ -14,10 +14,11 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/shop-homepage.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
 <!--    <script src="vendor/bootstrap/js/bootstrap-confirmation.min.js"></script>  -->
     <script type="text/javascript" src="vendor/jquery/jquery.js"></script>
+    <script src="js/host.js"></script>
 
   </head>
 
@@ -40,70 +41,71 @@
         </div>
       </div>
     </nav>
-      
+
     <!-- End navigation -->
 
 <script>
      $("#error-msg").css("display",  "none");
 </script>
 <div class="container">
-  
+
   <div class="row" id="pwd-container">
     <div class="col-md-4"></div>
-    
+
     <div class="col-md-4">
       <section class="login-form">
         <form method="post" action="http://127.0.0.1:8000/rest-auth/login/" role="login">
           <img src="http://i.imgur.com/RcmcLv4.png" class="img-responsive" alt="" />
           <div id="error-msg" class="alert alert-danger" style="display: none;">
 <!--
-                <strong>Warning!</strong> 
-              Indicates a warning that might need attention. 
+                <strong>Warning!</strong>
+              Indicates a warning that might need attention.
 -->
           </div>
           <input type="login" name="login" placeholder="Login" id="login", required class="form-control input-lg" value="emily" />
           <input type="email" name="email" placeholder="Email" id="email", required class="form-control input-lg" value="emily@gmail.com" />
-          
+
           <input type="password" class="form-control input-lg" id="password" placeholder="Password" required="" />
-          
-          
+
+
           <div class="pwstrength_viewport_progress"></div>
-          
-          
+
+
           <button id="submitbutton" type="submit" name="go" class="btn btn-lg btn-primary btn-block">Sign in</button>
-            
+
           <div>
             <a href="signup.html">Create account</a> or <a href="#">reset password</a>
           </div>
-          
+
         </form>
-        
-      </section>  
+
+      </section>
       </div>
       <div class="col-md-4"></div>
   </div>
 </div>
-      
+
 
   </body>
 
 </html>
 
-<script>      
-      var login_url = "http://127.0.0.1:8000/rest-auth/login/";
-    /* attach a submit handler to the form */          
+<script>
+      // var login_url = "http://127.0.0.1:8000/rest-auth/login/";
+      var login_url = addHost_("rest-auth/login/");
+    /* attach a submit handler to the form */
 
 $(document).ready(function(){
                $( "form" ).submit(function(event) {
                   event.preventDefault();
                   url = login_url;
-                  localStorage.clear();                     
+                  localStorage.clear();
                   username_ = $("#login").val();
-                  email_ = $('#email').val(); 
+                  email_ = $('#email').val();
                   password_ = $('#password').val();
-                  
+
                   var posting = $.post( url, { username: username_, email: email_, password: password_ } );
-                  
+
                   posting.done(function( data ) {
                       $("#error-msg").css("display",  "none");
                       localStorage.name = username_;
@@ -112,7 +114,7 @@ $(document).ready(function(){
                       localStorage.token = data.key;
                       window.location.href = "index.html";
                   });
-                  
+
                   posting.fail(function(data, status, xhr) {
                       $("#error-msg").css("display",  "block");
                       if (xhr == "") {

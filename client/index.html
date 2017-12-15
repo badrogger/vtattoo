@@ -14,25 +14,17 @@
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/shop-homepage.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
     <script type="text/javascript" src="vendor/jquery/jquery.js"></script>
 
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!--    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>   -->
-    
-      <style>
-/*
-        nav {
-              background-color: #FFFFFF; 
-        }
-        nav > * {
-              background-color: #FFFFFF;
-        }
-*/
 
-      </style>
-    
-      
+    <script src="js/host.js"></script>
+    <script src="js/get_index_images.js"></script>
+
+<!--    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>   -->
+
+
   </head>
 
   <body>
@@ -45,13 +37,15 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-          
+
           <ul class="nav navbar-nav">
-              <li class="acitve"> <a href="photo-editor/index.html" class="nav-link"> Editor</a></li>
+              <li id="create-btn" class="acitve" style="display: none;"> <a href="tattoo-create.html" class="nav-link"> Create tattoo</a></li>
           </ul>
-          
-          
-        
+
+          <ul class="nav navbar-nav">
+              <li id="user-tattoos-btn" class="acitve" style="display: none;"> <a href="tattoo-user-list.html" class="nav-link">Your tattoos</a></li>
+          </ul>
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li id="signin-btn" class="nav-item">
@@ -64,20 +58,20 @@
                 <a id="user-link" class="nav-link" href="#"></a>
             </li>
             <li id="logout-btn" class="nav-item" style="display: none;">
-                
+
                 <a data-bb-example-key="confirm-default" class="nav-link" href="">Logout</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-      
+
     <!-- Just registered alert -->
     <div id="just-signup" class="alert alert-success alert-dismissable" style="display: none;">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         You have been successfully registered!
     </div>
-      
+
     <!-- Page Content -->
     <div class="container">
       <div class="jumbotron" style="background-color: #f1f07e;">
@@ -119,8 +113,8 @@
               <div class="carousel-item">
                 <img class="d-block img-fluid" src="static/slide2.gif" alt="Third slide">
               </div>
-              
-              
+
+
 <!--
               <div class="carousel-item">
                 <img class="d-block img-fluid" src="../vtattoo/media/tattooimg/slide3.gif" alt="Third slide">
@@ -141,12 +135,10 @@
 
             <div class="col-lg-4 col-md-6 mb-4">
               <div id="test" class="card h-100">
-                <a href="#"><img class="card-img-top" src="../vtattoo/media/tattooimg/index/1.jpg" alt=""></a>
+                <a href="#"><img class="card-img-top" src="" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
-                       <a href="#">Trail</a>
                   </h4>
-                  <h5>$15.99</h5>
                   <p class="card-text"></p>
                 </div>
                 <div class="card-footer">
@@ -157,12 +149,10 @@
 
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="../vtattoo/media/tattooimg/index/2.jpg" alt=""></a>
+                <a href="#"><img class="card-img-top" src="" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">Woman</a>
                   </h4>
-                  <h5>$13.00</h5>
                   <p class="card-text"></p>
                 </div>
                 <div class="card-footer">
@@ -173,12 +163,10 @@
 
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="../vtattoo/media/tattooimg/index/3.jpg" alt=""></a>
+                <a href="#"><img class="card-img-top" src="" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">Lion</a>
                   </h4>
-                  <h5>$13.50</h5>
                   <p class="card-text"></p>
                 </div>
                 <div class="card-footer">
@@ -189,12 +177,10 @@
 
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="../vtattoo/media/tattooimg/index/4.jpg" alt=""></a>
+                <a href="#"><img class="card-img-top" src="" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">Bug</a>
                   </h4>
-                  <h5>$18.99</h5>
                   <p class="card-text"></p>
                 </div>
                 <div class="card-footer">
@@ -205,12 +191,10 @@
 
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="../vtattoo/media/tattooimg/index/5.jpg" alt=""></a>
+                <a href="#"><img class="card-img-top" src="" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">Dragon</a>
                   </h4>
-                  <h5>$24.99</h5>
                   <p class="card-text"></p>
                 </div>
                 <div class="card-footer">
@@ -221,12 +205,10 @@
 
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="../vtattoo/media/tattooimg/index/6.jpg" alt=""></a>
+                <a href="#"><img class="card-img-top" src="" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="#">Wheat</a>
                   </h4>
-                  <h5>$24.99</h5>
                   <p class="card-text"></p>
                 </div>
                 <div class="card-footer">
@@ -258,56 +240,46 @@
   </body>
 
 </html>
-
+<script type="text/javascript" src="js/isauthorized_action.js"></script>
 <script>
-    
-    if (localStorage.name != undefined) {
-        $("#signin-btn").css("display", "none");
-        $("#signup-btn").css("display", "none");
-        $("#user-btn").css("display", "block");
-        $("#logout-btn").css("display", "block");
-        $("#user-link").html(
-            "Welcome, " + "<span style='color: #ffd500;'>" 
-            + localStorage.name + "</span>"
-        );
-    } else {
-        $("#signin-btn").css("display", "block");
-        $("#signup-btn").css("display", "block");
-        $("#user-btn").css("display", "none"); 
-        $("#logout-btn").css("display", "none");
-    }
-    console.log(localStorage.justRegistered);
+
+    // if (localStorage.name != undefined) {
+    //     $("#signin-btn").css("display", "none");
+    //     $("#signup-btn").css("display", "none");
+    //     $("#user-btn").css("display", "block");
+    //     $("#create-btn").css("display", "block");
+
+    //     $("#logout-btn").css("display", "block");
+    //     $("#user-link").html(
+    //         "Welcome, " + "<span style='color: #ffd500;'>"
+    //         + localStorage.name + "</span>"
+    //     );
+    // } else {
+    //     $("#signin-btn").css("display", "block");
+    //     $("#signup-btn").css("display", "block");
+    //     $("#user-btn").css("display", "none");
+    //     $("#logout-btn").css("display", "none");
+    // }
+
     if (localStorage.justRegistered == "true") {
         $("#just-signup").css("display", "block");
-        console.log("changed");
         localStorage.justRegistered = "false";
     }
-    $(document).ready(function(){
-    $("#logout-btn").click(function(data) {
-        localStorage.clear();
-        window.location.href = "index.html";
-//        e.preventDefault();
-//        bootbox.alert("Hello world!");
-//        alert("clicked");
-//        bootbox.confirm("This is the default confirm!", function(result){ 
-//            alert("result");
-//            if (result == true) {
-//                localStorage.clear();
-//                window.location.href = "index.html";
-//            }
-//        })
-    });
-    });
-    $(document).ready(function(){
-    $("#test").click(function(data) {
-       $.ajax({
-       url: "http://localhost:8000/tattoo-images/1/",
-       type: 'GET',
-       // Fetch the stored token from localStorage and set in the header
-       headers: {"Authorization": localStorage.getItem('token')}
-    });
-
-    });
-    });
+    // $(document).ready(function(){
+    // $("#logout-btn").click(function(data) {
+    //     localStorage.clear();
+    //     window.location.href = "index.html";
+    // });
+    // });
+    // $(document).ready(function(){
+    //   $("#test").click(function(data) {
+    //      $.ajax({
+    //        url: "http://localhost:8000/tattoo-images/1/",
+    //        type: 'GET',
+    //        // Fetch the stored token from localStorage and set in the header
+    //        headers: {"Authorization": localStorage.getItem('token')}
+    //      });
+    //   });
+    // });
 
 </script>

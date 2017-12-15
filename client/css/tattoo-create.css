@@ -1,0 +1,433 @@
+/*
+Reset CSS
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/*
+ * Page Styles
+ */
+
+body {
+    font-family: 'PT Sans', sans-serif;
+}
+
+.wrapper {
+    margin: 2.5% auto;
+    max-width: 960px;
+    min-width: 960px;
+    padding: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 4em;
+}
+
+form {
+	text-align: center;
+}
+
+.name-box {
+    display: inline-block;
+    margin: 4% auto 2%;
+    text-align: center;
+    height: 2.6rem;
+    /*float: left;*/
+    font-size: 1.0rem;
+    font-weight: 100;
+    outline: none;
+    border: 2px solid #000;
+    box-sizing: border-box;
+}
+
+.url-box {
+	display: inline-block;
+    margin: 4% auto 2%;
+    text-align: center;
+    width: 90%;
+    height: 2.6rem;
+    float: left;
+    font-size: 1.0rem;
+    font-weight: 100;
+    outline: none;
+    border: 2px solid #000;
+    box-sizing: border-box;
+}
+
+.url-box::-webkit-input-placeholder {
+    color: #000;
+    opacity: 0.5;
+    font-size: 1.5rem;
+    font-weight: 100;
+    padding-top: 5px;
+}
+
+.url-box::-moz-placeholder {
+    color: #000;
+    opacity: 0.5;
+    font-size: 0.7em;
+    font-weight: 100;
+    padding-top: 5px;
+}
+
+.submit-url {
+    display: inline-block;
+    margin: 4% auto 2%;
+    text-align: center;
+    width: 15%;
+    height: 3.5rem;
+    font-size: 1.5rem;
+    font-weight: 100;
+    outline: none;
+    border: 2px solid #000;
+    /*box-sizing: border-box;*/
+}
+
+/* Styles for image container*/
+
+#imageContainer {
+	border: 2px solid #000;
+    display: inline-block;
+    padding: 5px;
+    vertical-align: top;
+    margin-left: 1%;
+    width: 65.6%;
+}
+
+#imageContainer img {
+	width: 100%;
+}
+
+/* Styles for sliders*/
+
+.sliders {
+    width: 30%;
+    display: inline-block;
+	border: 2px solid #000;
+	padding-left: 10px;
+}
+
+.sliders p {
+	margin: 18px 0;
+	vertical-align: middle;
+
+}
+
+.sliders label {
+	display: inline-block;
+	margin: 10px 0 0 0;
+	width: 100px;
+	font-size: 1.1rem;
+	color: #22313F;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.sliders input {
+	position: relative;
+	margin: 10px 20px 0 10px;
+	vertical-align: middle;
+}
+
+input[type=range] {
+    /*removes default webkit styles*/
+    -webkit-appearance: none;
+
+    /*fix for FF unable to apply focus style bug */
+    border-radius: 5px;
+
+    /*required for proper track sizing in FF*/
+    width: 80px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 7px;
+    background: #ABB7B7;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: #4B77BE;
+    margin-top: -6px;
+    vertical-align: middle;
+}
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:hover {
+	cursor: pointer;
+}
+
+
+.form-button {
+	display: inline-block;
+	height: 2.0rem;
+	width: 35%;
+    background-color: #22A7F0;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    font-size: 1.0rem;
+    color: #fff;
+    margin-bottom: 5px;
+    /*margin: 0px 0px 0px 0px;*/
+    border: 2px solid transparent;
+}
+
+.form-button:hover {
+    color: #22A7F0;
+    background-color: #fff;
+    border: 2px solid #22A7F0;
+}
+
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 1.95em;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 1.25em; height: 1.25em;
+  border: 2px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '✔';
+  position: absolute;
+  top: .1em; left: .3em;
+  font-size: 1.0em;
+  line-height: 0.8;
+  color: #09ad7e;
+  transition: all .2s;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  border: 2px dotted blue;
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 2px solid #4778d9!important;
+}
+
+styled-select {
+   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+   height: 29px;
+   overflow: hidden;
+   width: 240px;
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 29px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+   width: 268px;
+}
+
+.styled-select.slate {
+   background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+   height: 34px;
+   width: 240px;
+}
+
+.styled-select.slate select {
+   border: 1px solid #ccc;
+   font-size: 16px;
+   height: 34px;
+   width: 268px;
+}
+
+/* -------------------- Rounded Corners */
+.rounded {
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+}
+
+.semi-square {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+}
+
+/* -------------------- Colors: Background */
+.slate   { background-color: #ddd; }
+.green   { background-color: #779126; }
+.blue    { background-color: #3b8ec2; }
+.yellow  { background-color: #eec111; }
+.black   { background-color: #000; }
+
+/* -------------------- Colors: Text */
+.slate select   { color: #000; }
+.green select   { color: #fff; }
+.blue select    { color: #fff; }
+.yellow select  { color: #000; }
+.black select   { color: #fff; }
+
+
+/* -------------------- Select Box Styles: danielneumann.com Method */
+/* -------------------- Source: http://danielneumann.com/blog/how-to-style-dropdown-with-css-only/ */
+#mainselection select {
+   border: 0;
+   color: #EEE;
+   background: transparent;
+   font-size: 20px;
+   font-weight: bold;
+   padding: 2px 10px;
+   width: 378px;
+   *width: 350px;
+   *background: #58B14C;
+   -webkit-appearance: none;
+}
+
+#mainselection {
+   overflow:hidden;
+   width:350px;
+   -moz-border-radius: 9px 9px 9px 9px;
+   -webkit-border-radius: 9px 9px 9px 9px;
+   border-radius: 9px 9px 9px 9px;
+   box-shadow: 1px 1px 11px #330033;
+   background: #58B14C url("http://i62.tinypic.com/15xvbd5.png") no-repeat scroll 319px center;
+}
+
+
+/* -------------------- Select Box Styles: stackoverflow.com Method */
+/* -------------------- Source: http://stackoverflow.com/a/5809186 */
+select#soflow, select#soflow-color {
+   -webkit-appearance: button;
+   -webkit-border-radius: 2px;
+   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+   -webkit-padding-end: 20px;
+   -webkit-padding-start: 2px;
+   -webkit-user-select: none;
+   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+   background-position: 97% center;
+   background-repeat: no-repeat;
+   border: 1px solid #AAA;
+   color: #555;
+   font-size: inherit;
+   margin: 20px;
+   overflow: hidden;
+   padding: 5px 10px;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   width: 300px;
+}
+
+select#soflow-color {
+   color: #fff;
+   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
+   background-color: #779126;
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+   padding-left: 15px;
+}
+
+
+.place-select {
+    margin: auto 25px 15px auto;
+    width: 44%;
+    float: right;
+}
+
+.place-select-label {
+    font-size: 1px;
+    margin: 100px;
+}
+
+.wrapper {
+    margin-top: 40px;
+}

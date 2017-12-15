@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Shop Homepage - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/common.css" rel="stylesheet">
+
+    <!-- <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'> -->
+    <link href = "css/choose-tattoo.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="vendor/jquery/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/host.js"></script>
+
+    <!-- <script src="js/get_index_images.js"></script> -->
+<!--    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>   -->
+     <style>
+      #map {
+        height: 452px;
+        width: 100%;
+
+       }
+    </style>
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Vtattoo</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+          <ul class="nav navbar-nav">
+              <li class="acitve"> <a href="tattoo-create.html" class="nav-link"> Create tattoo</a></li>
+          </ul>
+
+
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li id="signin-btn" class="nav-item">
+                <a class="nav-link" href="signin.html">Login</a>
+            </li>
+            <li id="signup-btn" class="nav-item">
+                <a class="nav-link" href="signup.html">Signup</a>
+            </li>
+            <li id="user-btn" class="nav-item" style="display: none;">
+                <a id="user-link" class="nav-link" href="#"></a>
+            </li>
+            <li id="logout-btn" class="nav-item" style="display: none;">
+
+                <a data-bb-example-key="confirm-default" class="nav-link" href="">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<div id="successAlert" class="alert alert-success alert-dismissable" role="alert" style="display:none; margin-top: 48px;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Success!</strong> You ordered tattoo.
+</div>
+<div class="wrapper" id="chooseStudioWrp">
+ <div class="container" id="chooseStudioCont;" style="margin:4px;">
+
+  <div class="row">
+  <div class="col-md-5">
+    <!-- <br/> -->
+    <div style="display: inline;">
+    <h5 style="display: inline;">Search studio</h5>
+      <input id="mapSearch" class="typeahead form-control" style="display:inline;margin:10px auto;width:300px;" type="text">
+    </div>
+  </div>
+
+    <div class="col-md-8">
+      <!-- <h2>Map</h2>
+ -->
+      <div id="map"></div>
+
+    </div>
+    <div class="col-md-4">
+<div class="container">
+    <form role="form" id="infoForm">
+        <div class="header">
+            <h2>Tattoo parameters</h2>
+        </div>
+        <div class="form-group" id="tattooParamGr">
+           <p>
+            <input type="checkbox" id="tempChb" />
+            <label for="tempChb">Temp</label>
+            <br>
+            <input type="checkbox" id="coloredChb" />
+            <label for="coloredChb">Colored</label>
+          </p>
+          <p>
+          <div class="form-group place-select-group">
+          <label class="place-select-label" for="placeSelect">Place</label>
+          <select class="form-control place-select" id="placeSelect">
+            <option>Shoulder</option>
+            <option>Arm</option>
+            <option>Chest</option>
+            <option>Leg</option>
+            <option>Back</option>
+            <option>Hip</option>
+            <option>Head</option>
+          </select>
+        </div>
+      </p>
+      <p>
+      </p>
+    </div>
+
+        <!-- <button type="submit"  class="btn btn-default">Submit</button> -->
+    </form>
+</div>
+
+<div class="container" id="studioInfo">
+    <form role="form" id="infoForm">
+        <div class="header">
+            <h2 id="studioName"></h2>
+            <h2 id="studioId" style="display: none;"></h2>
+        </div>
+        <p class="text-left" id="studioAdress"></p>
+        <h5 id="price">$24.99</h5>
+
+        <button type="submit" class="btn btn-default" id="orderButton">Order</button>
+    </form>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Vtattoo 2017</p>
+    </div>
+  </footer>
+  </body>
+    <script>
+      var stUrl = addHost_("tattoo-studios/");
+      var studiosList = [];
+      var arrMarkers = [];
+
+      $("#orderButton").click(function() {
+
+        event.preventDefault();
+        /*'tattoo', 'studio', 'colored', 'temporary', 'place'*/
+        var formData = new FormData();
+        // console.log(localStorage['tattoo'] != undefined ? localStorage['tattoo'] : 1);
+        // console.log($("#studioId").html());
+        // console.log($("#tempChb").val());
+        // console.log($("#coloredChb").val());
+        // console.log($("#placeSelect").val());
+        // console.log(parseFloat($("#price").val().slice(1)));
+
+        formData.append('tattoo', localStorage['tattoo'] != undefined ? localStorage['tattoo'] : 1);
+        formData.append('studio', $("#studioId").html());
+        formData.append('temporary', $("#tempChb").is(':checked'));
+        formData.append('colored', $("#coloredChb").is(':checked'));
+        formData.append('place', $("#placeSelect").val());
+        formData.append('price', parseFloat($("#price").html().slice(1)));
+        // console.log(formData.entries());
+        for (var pair in formData.entries()) {
+          console.log(pair[0] + ',' + pair[1])
+        }
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('POST', addHost_("public-deals/"), true);
+        xhr.setRequestHeader("Authorization", "Token " + localStorage["token"]);
+        xhr.onload = function () {
+              if (xhr.status === 201) {
+                $("#successAlert").css("display", "block");
+              } else {
+                console.info("failed");
+              }
+            };
+
+            xhr.send(formData);
+
+      });
+      function initMap(studiosList) {
+
+              var uluru;
+              if (studiosList.length != 0) {
+                uluru = {lat: studiosList[0].lat, lng: studiosList[0].lng};
+              }
+
+
+              var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: uluru
+              });
+
+        var geocoder = new google.maps.Geocoder;
+
+
+              studiosList.forEach(function (item) {
+                var marker = new google.maps.Marker({
+                  position: {lat: item.lat, lng: item.lng},
+                  map: map,
+                  studio: item
+                });
+
+                arrMarkers.push(marker);
+
+                google.maps.event.addListener(marker, 'click', function() {
+                    showStudio(marker.studio);});
+              });
+      }
+
+      function init() {
+
+        studiosList = [];
+         $.ajax({
+           url: stUrl,
+           type: 'GET',
+           headers: {"Authorization": "token" + localStorage.getItem('token')},
+           data: { get_param: 'value' },
+           dataType: 'json',
+           success: function (data) {
+               data.forEach(function (item, i) {
+                  studiosList.push(item)
+               });
+    //            $('#mapSearch.typeahead').typeahead({ input: '.js-typeahead-country_v1',
+    // order: "desc",
+    // source: {
+    //     data: [
+    //         "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda",
+    //         "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh",
+    //         "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia",
+    //         "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burma",
+    //         "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic", "Chad",
+    //         "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic", "Congo, Republic of the",
+    //         "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti",
+    //         "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador",
+    //         "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon",
+    //         "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Greenland", "Grenada", "Guatemala", "Guinea",
+    //         "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India",
+    //         "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan",
+    //         "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kuwait", "Kyrgyzstan", "Laos",
+    //         "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+    //         "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands",
+    //         "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Mongolia", "Morocco", "Monaco",
+    //         "Mozambique", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger",
+    //         "Nigeria", "Norway", "Oman", "Pakistan", "Panama", "Papua New Guinea", "Paraguay", "Peru",
+    //         "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Samoa", "San Marino",
+    //         "Sao Tome", "Saudi Arabia", "Senegal", "Serbia and Montenegro", "Seychelles", "Sierra Leone",
+    //         "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "Spain",
+    //         "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan",
+    //         "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey",
+    //         "Turkmenistan", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States",
+    //         "Uruguay", "Uzbekistan", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+    //     ]
+    // },
+  //});
+               initMap(studiosList);
+            }
+        });
+      }
+
+
+      function showStudio(studio) {
+        var geocoder = new google.maps.Geocoder;
+        var latlng = {lat: studio.lat, lng: studio.lng};
+        geocoder.geocode({'location': latlng}, function(results, status) {
+          if (status === 'OK') {
+            if (results[1]) {
+              document.getElementById("studioInfo").style.display = "block";
+              document.getElementById("studioName").innerHTML =  studio.name;
+              document.getElementById("studioAdress").innerHTML = results[1].formatted_address;
+              document.getElementById("studioId").innerHTML = studio.id;
+            } else {
+              window.alert('No results found');
+            }
+          } else {
+            alert('Geocoder failed due to: ' + status);
+            window.alert('Geocoder failed due to: ' + status);
+          }
+        });
+      }
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVK36Cm-KJ_99AZtLNt54ozzHu0K5zx-k&callback=init">
+    </script>
+
+<script type="text/javascript" src="js/isauthorized_action.js"></script>
+
+</html>

@@ -13,6 +13,16 @@ ti = TattooImage(owner=admin_user, name="wolf")
 TattooImage.objects.all()
 
 from  django.core.files import File"
-with open('media/tattooimg/wolf.jpg', "rb") as im_file:
-    ti.datafile.save('media/tattooimg/wolf.jpg', File(im_file), save=True)
+with open('media/wolf.jpg', "rb") as im_file:
+    ti.datafile.save('tattooimg/wolf.jpg', File(im_file), save=True)
+ti.save()
 <-- -->
+
+<!-- psql -- >
+sudo su - postgres
+psql
+\list 
+\dt
+\connect
+<-- -->
+

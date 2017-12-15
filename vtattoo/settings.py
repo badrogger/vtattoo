@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
+    'django_extensions',
     #'oauth2_provider',
 
     'tattoo',
@@ -110,6 +111,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.static',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -124,8 +126,14 @@ WSGI_APPLICATION = 'vtattoo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'vtattoodb',
+        'USER': 'ivdpopovich',
+        'PASSWORD': 'sdoi1820',
+        'HOST': 'localhost',
+        'PORT': '',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -183,7 +191,7 @@ STATIC_URL = "/static/"
 # )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-GEOIP_PATH = os.path.join(BASE_DIR, 'media', 'geoip')
+GEOIP_PATH = os.path.join(BASE_DIR, 'geoip')
 
 # CELERY_BROKER_URL = 'redis://h:p3f9d67d2b4a54525ea18a7af8c6c01e3de88e02620e962b794cc3a605d50d48c@ec2-34-206-214-110.compute-1.amazonaws.com:33139'
 # CELERY_RESULT_BACKEND = 'redis://h:p3f9d67d2b4a54525ea18a7af8c6c01e3de88e02620e962b794cc3a605d50d48c@ec2-34-206-214-110.compute-1.amazonaws.com:33139'
