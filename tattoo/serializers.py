@@ -19,24 +19,6 @@ class GroupSerializer(serializers.ModelSerializer):
         fields = ('url', 'name')
 
 
-# class TattooImageSerializer(serializers.ModelSerializer):
-#     owner = serializers.ReadOnlyField(source='owner.username')
-
-#     class Meta:
-#         model = TattooImage
-#         read_only_fields = ('id', 'name', 'owner', 'datafile')
-
-
-# class PostViewSet(viewsets.ModelViewSet):
-#     class Meta:
-#         queryset = Post.objects.all()
-#         serializer_class = PostSerializer
-#         permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-
-#     def perform_create(self, serializer):
-#         serializer.save(user=self.request.user)
-
-
 class TattooSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.id')
 
@@ -59,5 +41,6 @@ class DealSerializer(serializers.ModelSerializer):
     class Meta:
         model = Deal
         fields = ('id', 'date', 'user', 'state', 'price', 'tattoo', 'studio', 'colored', 'temporary', 'place', 'deal_code', 'image')
+
 
 # admin.autodiscover()

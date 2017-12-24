@@ -18,16 +18,10 @@ import os
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from rest_framework import routers
 from tattoo import views
 from django.conf.urls.static import static
 
 from django.conf import settings
-
-# router = routers.DefaultRouter()
-# router.register(r'users', views.UserViewSet)
-# router.register(r'groups', views.GroupViewSet)
-
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -38,10 +32,7 @@ urlpatterns = [
     url(r'^tattoo-studios/$', views.StudioList.as_view()),
     url(r'^tattoo-users/$', views.UserTattooList.as_view()),
     url(r'^deals/$', views.DealList.as_view()),
-    # url(r'^image-upload/$', views.FileUploadView.as_view()),
-    # url(r'^tattoo-images/(?P<pk>[0-9]+)/$', views.TattooImageDetail.as_view()),
-    # url(r'^', include(router.urls)),
-    # url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
-    # url(r'^api-auth/', admin.site.urls),
-    # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^tattoo-studios/(?P<pk>[0-9]+)/$', views.StudioDetail.as_view()),
+    url(r'^code-deal/$', views.DealDetail.as_view()),
+    url(r'^update-deal/(?P<pk>[0-9]+)/$', views.DealUpdate.as_view()),
 ] + static(settings.MEDIA_URL, document_root=os.path.join(settings.MEDIA_ROOT, "tattooimg"))
